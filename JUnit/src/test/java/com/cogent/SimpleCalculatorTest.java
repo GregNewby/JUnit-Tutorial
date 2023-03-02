@@ -21,7 +21,7 @@ class SimpleCalculatorTest {
 	*/
 	
 	SimpleCalculator sc = null;
-	CalculatorService service = mock(CalculatorService.class); //This is a mock service that may be created elsewhere
+	CalculatorService service = mock(CalculatorService.class); //This is a mock service that may have been created elsewhere
 	
 	// @BeforeEach runs before each test is run
 	@BeforeEach
