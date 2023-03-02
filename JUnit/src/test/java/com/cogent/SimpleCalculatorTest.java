@@ -13,7 +13,7 @@ class SimpleCalculatorTest {
 	 * It is also a good idea to name the test methods specifically such as twoPlusTwoShouldBeFour.
 	*/
 
-	//2 plus 2 should equal 4
+	//2 plus 2 should equal 4 tested by assertEquals
 	@Test
 	void twoPlusTwoShouldBeFour() {
 		SimpleCalculator sc = new SimpleCalculator();
