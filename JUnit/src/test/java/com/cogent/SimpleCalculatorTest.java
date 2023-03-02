@@ -1,6 +1,11 @@
 package com.cogent;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,12 +21,12 @@ class SimpleCalculatorTest {
 	*/
 	
 	SimpleCalculator sc = null;
+	CalculatorService service = mock(CalculatorService.class); //This is a mock service that may be created elsewhere
 	
-	// @BeforeAll is used to signal that the annotated method should be executed before all tests in the current test class.
-	// In contrast to @BeforeEach methods, @BeforeAll methods are only executed once for a given test class.
-	@BeforeAll
+	// @BeforeEach runs before each test is run
+	@BeforeEach
 	void setUpSimpleCalculator() {
-		sc = new SimpleCalculator();
+		sc = new SimpleCalculator(service);
 	}
 
 	//2 plus 2 should equal 4 tested by assertEquals
@@ -44,6 +49,12 @@ class SimpleCalculatorTest {
 	@Test
 	void testAddIsNotNull() {
 		assertNotNull(sc.add(2, 2));
+	}
+	
+	@Test
+	void twoMultiplyByTwoPlusFirstNumEqualsSix() {
+		when(service.multiply(2, 2)).thenReturn(4);
+		assertEquals(6, sc.multiplyThenAddNum1(2, 2));
 	}
 
 }
