@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -55,6 +55,9 @@ class SimpleCalculatorTest {
 	void twoMultiplyByTwoPlusFirstNumEqualsSix() {
 		when(service.multiply(2, 2)).thenReturn(4);
 		assertEquals(6, sc.multiplyThenAddNum1(2, 2));
+		
+		//verifies is service was actually called
+		verify(service).multiply(2, 2);
 	}
 
 }
