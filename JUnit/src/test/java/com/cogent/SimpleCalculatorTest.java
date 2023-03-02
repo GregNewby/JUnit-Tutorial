@@ -2,6 +2,8 @@ package com.cogent;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class SimpleCalculatorTest {
@@ -12,34 +14,35 @@ class SimpleCalculatorTest {
 	 * That way you can find out which tests fail and why.
 	 * It is also a good idea to name the test methods specifically such as twoPlusTwoShouldBeFour.
 	*/
+	
+	SimpleCalculator sc = null;
+	
+	// @BeforeAll is used to signal that the annotated method should be executed before all tests in the current test class.
+	// In contrast to @BeforeEach methods, @BeforeAll methods are only executed once for a given test class.
+	@BeforeAll
+	void setUpSimpleCalculator() {
+		sc = new SimpleCalculator();
+	}
 
 	//2 plus 2 should equal 4 tested by assertEquals
-	
 	@Test
 	void twoPlusTwoShouldBeFour() {
-		SimpleCalculator sc = new SimpleCalculator();
 		assertEquals(4, sc.add(2, 2));
 	}
 	
 	//different type of assert's below
-	
 	@Test
 	void testAddIsNotEqual() {
-		SimpleCalculator sc = new SimpleCalculator();
 		assertNotEquals(5, sc.add(2, 2));			
-
 	}
 	
 	@Test
 	void testAddIsTrue() {
-		SimpleCalculator sc = new SimpleCalculator();
 		assertTrue(sc.add(2, 5) == 7);
-
 	}
 	
 	@Test
 	void testAddIsNotNull() {
-		SimpleCalculator sc = new SimpleCalculator();
 		assertNotNull(sc.add(2, 2));
 	}
 
