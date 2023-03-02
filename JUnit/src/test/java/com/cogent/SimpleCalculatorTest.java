@@ -14,6 +14,7 @@ class SimpleCalculatorTest {
 	*/
 
 	//2 plus 2 should equal 4 tested by assertEquals
+	
 	@Test
 	void twoPlusTwoShouldBeFour() {
 		SimpleCalculator sc = new SimpleCalculator();
